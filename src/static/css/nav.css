@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.nav-box {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0e2741;
+  padding: 20px 0;
+  padding-top: 50px;
+  width: 220px;
+}
+
+.nav-head svg {
+  margin-bottom: 15px;
+}
+
+.nav-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-body ul li{
+  width: 80%;
+}
+
+.nav-item {
+  margin: 1.5rem 0;
+  margin-left: 20px;
+}
+.nav-ite{
+  margin-left: 20px;
+  display: flex;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.nav-ite p{
+  margin-left: 10px;
+  color: white;
+  white-space: nowrap;
+}
+
+.nav-ite img{
+  width: 30px;
+  margin-top: 15px;
+  height: 30px;
+
+}
+.nav-ite svg{
+  width: 30px;
+  margin-top: 15px;
+  height: 30px;
+}
+
+.nav-body{
+  width: 100%;
+}
+
+@media (max-width :750px) {
+.nav-container{
+  width: 150px;
+}
+.nav-box{
+  width: 200px;
+}
+}

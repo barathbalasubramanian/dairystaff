@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.sp-container {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.sp-box {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.sp-tabs {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.sp-tabs button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sp-tabs button.active {
+  background-color: #0e2741;
+  color: #fff;
+}
+.sp-inputgroup {
+  width: 50%;
+}
+.sp-inputgroup button {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+.sp-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sp-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 25px;
+}
+
+.sp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sp-id {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.sp-name {
+  font-weight: bold;
+}
+
+.sp-status {
+  display: flex;
+  align-items: center;
+  color: #00cc44;
+  font-weight: bold;
+}
+
+.sp-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #00cc44;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.sp-card-body {
+  margin-bottom: 10px;
+}
+
+.sp-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 0.9em;
+}
+
+.sp-contact-info {
+  margin-top: 10px;
+}
+
+.sp-email,
+.sp-phone,
+.sp-address {
+  margin: 5px 0;
+}
+
+.sp-connect-btn {
+  background-color: #00ccb1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.sp-connect-btn:hover {
+  background-color: #009c8b;
+}
+.spu-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 25px;
+}
+
+.spu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.spu-id {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.spu-name {
+  font-weight: bold;
+}
+
+.spu-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  color: #cc0000; /* Red color for "Available On" text */
+}
+
+.spu-dot.spu-red {
+  background-color: #cc0000; /* Red dot */
+}
+
+.spu-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.spu-date {
+  margin-left: 5px;
+  color: #cc0000;
+}
+
+.spu-card-body {
+  margin-bottom: 10px;
+}
+
+.spu-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 0.9em;
+}
+
+.spu-contact-info {
+  margin-top: 10px;
+}
+
+.spu-email,
+.spu-phone,
+.spu-address {
+  margin: 5px 0;
+}
+
+.spu-comments-section {
+  margin-top: 15px;
+}
+
+.spu-comments-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.spu-comments-section textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  resize: none;
+  font-size: 0.9em;
+}
+.spu-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
