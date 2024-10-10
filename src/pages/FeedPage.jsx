@@ -5,6 +5,7 @@ import "../static/css/MainPage.css";
 import useAuth from "./UseAuth";
 import { useState } from "react";
 
+
 const FeedPage = () => {
   const [isAuthChecked, setIsAuthChecked] = useState(false);
 
