@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../static/css/FormerDetails.css";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaFilter } from "react-icons/fa"; // Importing filter and close icons
 import { useGlobalContext } from "../Context";
 import Search from "./Search";
 
 const FormerDetails = () => {
   const [showCow, setShowCow] = useState(false);
   const [selectedCow, setSelectedCow] = useState(null);
-  const { loading, setLoading, formerData, staff, formerID, formerTicket,GetTicketDetails } =
-    useGlobalContext();
-    console.log(formerData)
+  const { loading, setLoading, formerData, staff, formerID, formerTicket, GetTicketDetails } = useGlobalContext();
+  const [statusFilter, setStatusFilter] = useState(""); // State for status filter
+  const [typeFilter, setTypeFilter] = useState(""); // State for type filter
+  const [sortOrder, setSortOrder] = useState("asc"); // State for sort order
+  const [showFilter, setShowFilter] = useState(false); // State to control filter visibility
 
   const navigate = useNavigate();
 
@@ -36,9 +38,22 @@ const FormerDetails = () => {
     setShowCow(false);
     setSelectedCow(null);
   };
+
   if (loading || formerID === -1 || staff.Staff_id === -1) {
     return <>Loading...</>;
   }
+
+  // Filter and sort ticket data
+  const filteredTickets = formerTicket
+    .filter(ticket => (statusFilter ? ticket.Status === statusFilter : true))
+    .filter(ticket => (typeFilter ? ticket.Type === typeFilter : true))
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.Ticket_id - b.Ticket_id; // Sort by Ticket ID ascending
+      } else {
+        return b.Ticket_id - a.Ticket_id; // Sort by Ticket ID descending
+      }
+    });
 
   return (
     <div className="formerdetail-container">
@@ -100,13 +115,13 @@ const FormerDetails = () => {
         </div>
         <div className="formerdetail-details">
           <div className="formerdetails-head">
-            <h3>farmer Detail’s</h3>
+            <h3>Farmer Detail’s</h3>
           </div>
           <div className="formerdetail-info">
             <table>
               <tbody>
                 <tr>
-                  <td>farmer Name</td>
+                  <td>Farmer Name</td>
                   <td>:</td>
                   <td>{formerData.name}</td>
                 </tr>
@@ -162,34 +177,49 @@ const FormerDetails = () => {
             </table>
           </div>
         </div>
-        <div className="formerdetail-cow">
-          <table>
-            <thead>
-              <tr>
-                <th>Cow ID</th>
-                <th>Breed</th>
-                <th>Age</th>
-                <th>Show</th>
-              </tr>
-            </thead>
-            <tbody>
-              {formerData.CowList.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.id}</td>
-                  <td>{item.breed}</td>
-                  <td>
-                    {item.age.year} Year, {item.age.month} Month
-                  </td>
-                  <td>
-                    <button onClick={() => handleShowCow(item)}>
-                      view service
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        {/* Filter and Sort Controls */}
+        <div className="filter-controls">
+          {!showFilter ? (
+            <FaFilter className="filter-icon" onClick={() => setShowFilter(true)} />
+          ) : (
+            <div className="filter-section">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+              >
+                <option value="">All Status</option>
+                <option value="pendingApproval">Pending</option>
+                <option value="completed">Complete</option>
+                <option value="live">Live</option>
+              </select>
+
+              <select
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
+              >
+                <option value="">All Types</option>
+                <option value="Veterinary">Veterinary</option>
+                <option value="AI">AI</option>
+                <option value="Feed">Feed</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Loan">Loan</option>
+              </select>
+
+              <select
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
+              >
+                <option value="asc">Sort Ascending</option>
+                <option value="desc">Sort Descending</option>
+              </select>
+
+              <FaTimes className="close-icon" onClick={() => setShowFilter(false)} />
+            </div>
+          )}
         </div>
+
+        {/* Tickets Table */}
         <div className="formerdetail-cow">
           <table>
             <thead>
@@ -202,7 +232,7 @@ const FormerDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {formerTicket.map((item, index) => (
+              {filteredTickets.map((item, index) => (
                 <tr key={index}>
                   <td>{item.Ticket_id}</td>
                   <td>{item.Status}</td>
@@ -210,7 +240,7 @@ const FormerDetails = () => {
                   <td>{item.Comments}</td>
                   <td>
                     <button onClick={() => handleclick(item.Ticket_id)}>
-                      view Ticket
+                      View Ticket
                     </button>
                   </td>
                 </tr>
