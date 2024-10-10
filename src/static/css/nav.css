@@ -17,7 +17,8 @@
   background-color: #0e2741;
   padding: 20px 0;
   padding-top: 50px;
-  width: 220px;
+  width: 230px;
+  min-height: 80vh;
 }
 
 .nav-head svg {
@@ -33,32 +34,23 @@
   width: 80%;
 }
 
-.nav-item {
-  margin: 1.5rem 0;
-  margin-left: 20px;
-}
 .nav-ite{
-  margin-left: 20px;
   display: flex;
   height: 50px;
-  margin-bottom: 20px;
 }
 .nav-ite p{
-  margin-left: 10px;
   color: white;
   white-space: nowrap;
 }
 
 .nav-ite img{
-  width: 30px;
-  margin-top: 15px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 
 }
 .nav-ite svg{
-  width: 30px;
-  margin-top: 15px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
 .nav-body{

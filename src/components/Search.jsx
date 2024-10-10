@@ -11,20 +11,14 @@ const Search = () => {
   };
   return (
     <>
-      <div className="search">
-        <div className="search-parent">
-          <input type="text" placeholder="Search" />
+      <div className="search px-4 py-3">
+        <div className="">
+          <input type="text" placeholder="Search" className="px-2 py-[3px] pl-3 rounded-sm outline-none border-none" />
         </div>
-        <div className="manage">
+        <div className="manage cursor-pointer" onClick={toggleDropdown}>
           <div className="drop">
             <h3>Manage Account</h3>
             <img className="manage-accounts-icon" alt="" src={account} />
-            <img
-              className="arrow-drop-down-icon"
-              onClick={toggleDropdown}
-              alt=""
-              src={arrow}
-            />
           </div>
 
           {dropdownVisible && <AccountDropdown />}
