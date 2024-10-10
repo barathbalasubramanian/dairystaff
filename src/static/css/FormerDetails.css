@@ -13,6 +13,7 @@
   border-radius: 8px;
   padding: 20px;
   width: 80%;
+  margin-bottom: 10px;
 }
 
 .formerdetail-ticket {
@@ -40,6 +41,7 @@
   justify-content: center;
   width: 100%;
   background-color: #dcecf9;
+  margin-bottom: 20px;
 }
 
 .formerdetails-head h3 {
@@ -93,13 +95,14 @@
   background-color: #4695b8;
 }
 
-.formerdetail-cow table tbody tr td button{
+.formerdetail-cow table tbody tr td button {
   background-color: #4695b8;
   padding: 10px;
   border-radius: 5px;
-  /* border: none; */
+
   color: #fff;
 }
+
 .cow-container {
   position: fixed;
   top: 50%;
@@ -149,6 +152,7 @@
 .cow-table tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -162,4 +166,35 @@
 
 .overlay.active {
   display: block;
+}
+
+
+.filter-controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.filter-controls {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.filter-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.filter-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.close-icon {
+  font-size: 24px;
+  cursor: pointer;
 }
