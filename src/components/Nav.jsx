@@ -7,7 +7,6 @@ import { useGlobalContext } from "../Context";
 const Nav = () => {
   const navigate = useNavigate();
   const { formerID } = useGlobalContext()
-  console.log(formerID)
   const handlelogout = () => {
     localStorage.removeItem("token");
     navigate("/");
