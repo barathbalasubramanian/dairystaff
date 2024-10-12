@@ -26,7 +26,7 @@ const TicketDetails = () => {
 
   const renderTable = (tabData, title) => (
     <>
-      <h4>{title}</h4>
+      <h4 className="py-6">{title}</h4>  
       {tabData.length === 0 && (
         <>
         <div className="no-data">
@@ -38,12 +38,12 @@ const TicketDetails = () => {
         <table className="ticketDetails-table">
           <thead className="ticketDetails-tablehead">
             <tr>
-              <th>Ticket Number</th>
-              <th>Former ID</th>
-              <th>Service Type</th>
-              <th>Assigned Date & Time</th>
-              <th>Assigned By</th>
-              <th>Show</th>
+              <th className="font-medium">Ticket Number</th>
+              <th className="font-medium">Former ID</th>
+              <th className="font-medium">Service Type</th>
+              <th className="font-medium">Assigned Date & Time</th>
+              <th className="font-medium">Assigned By</th>
+              <th className="font-medium">Show</th>
             </tr>
           </thead>
           <tbody className="ticketDetails-tablebody">
@@ -57,7 +57,20 @@ const TicketDetails = () => {
                 <td>{item.ticketNumber}</td>
                 <td>{item.formerID}</td>
                 <td>{item.serviceType}</td>
-                <td>{item.assignedDateTime}</td>
+                <td>
+                  {
+                    new Date(item.assignedDateTime).toLocaleString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                      hour12: true,
+                      timeZone: 'UTC'
+                    })
+                  }
+                </td>
                 <td>{item.assignedBy}</td>
                 <td>
                   <button

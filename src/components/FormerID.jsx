@@ -23,7 +23,7 @@ const FormerID = () => {
       <div className="formerid-containter">
         <Search />
         <div className="formerdemo">
-          <div className="formerid-box">
+          <div className="formerid-box w-[45%] px-10 py-10 rounded-md bg-[#FAF9F6]">
             <input
               type="text"
               placeholder="Enter Former ID"
@@ -31,7 +31,7 @@ const FormerID = () => {
                 setId(e.target.value);
               }}
             />
-            <div className="formerid-but">
+            <div className="formerid-but self-end flex justify-end">
               <button onClick={handleclick}>Verify</button>
             </div>
           </div>

@@ -60,7 +60,7 @@ const Login = () => {
           </div>
         </div>
         <div className="login-box">
-          <div className="login-head">
+          <div className="login-head py-6">
             <h2>Login</h2>
           </div>
           <div className="login-form">
@@ -70,6 +70,8 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="Name"
+                  className="outline-none"
+                  required
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
@@ -80,6 +82,8 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Password"
+                  className="outline-none"
+                  required
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
@@ -87,8 +91,8 @@ const Login = () => {
               </div>
             </form>
             {/* <Link to="/ticketDetails"> */}
-            <button className="login-but" onClick={handlelogin}>
-              LOGIN
+            <button className="login-but mt-10" onClick={handlelogin}>
+              Login
             </button>
             <button className="login-but" onClick={handleRegister}>
               Register

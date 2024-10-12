@@ -26,3 +26,7 @@ a {
 *{
   font-family: 'Poppins' !important;
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}

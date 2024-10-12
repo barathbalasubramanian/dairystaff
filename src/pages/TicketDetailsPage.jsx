@@ -19,7 +19,7 @@ const TicketDetailsPage = () => {
           <Nav />
         </div>
         <div className="main-content">
-        <TicketDetails />
+          <TicketDetails />
         </div>
       </div>
     </>
