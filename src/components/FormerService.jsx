@@ -6,6 +6,7 @@ import { useGlobalContext } from "../Context";
 import _ from "lodash";
 import pic from "../static/img/pic.gif";
 import Search from "./Search";
+import { ArrowLeft } from 'react-feather';
 
 const FormerService = () => {
   const {
@@ -58,6 +59,10 @@ const FormerService = () => {
   const handleServiceChange = (event) => {
     const service = event.target.value;
     setSelectedService(service);
+  };
+  const handleBackClick = () => {
+    // Your back logic here, for example:
+    window.history.back(); // Go to the previous page
   };
 
   const toggleDoctorPopup = () => {
@@ -174,6 +179,9 @@ const FormerService = () => {
             </div>
           )}
 
+          <div className="formerservice-back-button" onClick={handleBackClick}>
+        <ArrowLeft size={24} />
+      </div>
           <div className="formerservice-content">
             <div className="formerservice-details">
               <div className="formerservice-details-page">
@@ -264,58 +272,7 @@ const FormerService = () => {
                   </p>
                 </div>
               </div>
-              {/* <table>
-                <tbody>
-                  <tr>
-                    <td>Farmer Name</td>
-                    <td>:</td>
-                    <td>{formerData.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Phone Number</td>
-                    <td>:</td>
-                    <td>
-                      {formerData.phno.mobile1} <br /> {formerData.phno.mobile2}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
-                    <td>:</td>
-                    <td>
-                      {formerData.Address.address1} <br />
-                      {formerData.Address.address2}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Cow’s Count</td>
-                    <td>:</td>
-                    <td>{formerData.CowCount}</td>
-                  </tr>
-                  <tr>
-                    <td>VLCC</td>
-                    <td>:</td>
-                    <td>{formerData.VLCC}</td>
-                  </tr>
-                  <tr>
-                    <td>VSP</td>
-                    <td>:</td>
-                    <td>
-                      {formerData.VSP.name} <br />
-                      {formerData.VSP.phno}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>BMC</td>
-                    <td>:</td>
-                    <td>{formerData.BMC}</td>
-                  </tr>
-                  <tr>
-                    <td>Cluster</td>
-                    <td>:</td>
-                    <td>{formerData.Cluster}</td>
-                  </tr>
-                </tbody>
-              </table> */}
+             
             </div>
             <div className="formerservice-service">
               {preorder === null && showFeed && navigate("/feed")}
@@ -436,6 +393,9 @@ const FormerService = () => {
               )}
               {showloan && (
                 <>
+                  <div className="formerservice-back-button" onClick={handleBackClick}>
+                    <ArrowLeft size={24} />
+                  </div>
                   <div className="loan-container">
                     <div className="loan-container-head">
                       <h1>LOAN</h1>
