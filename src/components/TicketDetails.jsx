@@ -136,6 +136,7 @@ const filterAndSortTickets = (tickets) => {
     <div className="ticketDetails-container">
       <Search />
       <div className="ticketDetails-box">
+<<<<<<< HEAD
         {/* Filter Icon */}
         <div className="filter-controls">
           {!showFilters ? (
@@ -183,6 +184,10 @@ const filterAndSortTickets = (tickets) => {
 
         {/* Ticket Tabs */}
         <div className="ticketDetails-tabs">
+=======
+
+        {/* <div className="ticketDetails-tabs">
+>>>>>>> 739e4cca87c3fd66c4e11ba74811e8263e5eaae6
           <div className="ticketDetails-inputgroup">
             <button
               onClick={() => setTab("live")}
@@ -207,17 +212,53 @@ const filterAndSortTickets = (tickets) => {
               Completed
             </button>
           </div>
+        </div> */}
+ 
+        <div className="flex space-x-4 mt-4 pb-4 w-[90%] m-auto">
+          <div className="ticketDetails-inputgroup">
+            <button
+              onClick={() => setTab("live")}
+              className={`py-2 px-6 rounded-full transition-all duration-300 
+                ${tab === "live" ? "bg-blue-600 text-white shadow-lg" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+            >
+              Live
+            </button>
+          </div>
+
+          <div className="ticketDetails-inputgroup">
+            <button
+              onClick={() => setTab("pendingApproval")}
+              className={`py-2 px-6 rounded-full transition-all duration-300 
+                ${tab === "pendingApproval" ? "bg-yellow-500 text-white shadow-lg" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+            >
+              Pending Approval
+            </button>
+          </div>
+
+          <div className="ticketDetails-inputgroup">
+            <button
+              onClick={() => setTab("completed")}
+              className={`py-2 px-6 rounded-full transition-all duration-300 
+                ${tab === "completed" ? "bg-green-600 text-white shadow-lg" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+            >
+              Completed
+            </button>
+          </div>
         </div>
 
+<<<<<<< HEAD
         {/* Ticket Tables */}
+=======
+>>>>>>> 739e4cca87c3fd66c4e11ba74811e8263e5eaae6
         <div className="ticketDetails-table-container">
           {tab === "live" && (
+            TicketData && 
             <>
-              {renderTable(TicketData.live.assignedByYou, "Assigned by You")}
-              {renderTable(
-                TicketData.live.assignedByOthers,
-                "Assigned by Others"
-              )}
+                {renderTable(TicketData.live.assignedByYou, "Assigned by You")}
+                {renderTable(
+                  TicketData.live.assignedByOthers,
+                  "Assigned by Others"
+                )}
             </>
           )}
           {tab === "pendingApproval" && (

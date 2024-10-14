@@ -96,7 +96,7 @@ const FormerDetails = () => {
         )}
         <div className="formerdetail-ticket">
           <Link to="/formerService">
-            <button>
+            <button className="flex items-center space-x-2 px-4 py-2 bg-[#4695b8] text-white rounded-lg shadow-md transition-colors">
               <svg
                 width="24"
                 height="24"
@@ -106,16 +106,16 @@ const FormerDetails = () => {
               >
                 <path
                   d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z"
-                  fill="#1C1B1F"
+                  fill="currentColor"
                 />
               </svg>
-              <h3>Add Tickets</h3>
+              <h3 className="text-lg font-medium">Add Tickets</h3>
             </button>
           </Link>
         </div>
-        <div className="formerdetail-details">
-          <div className="formerdetails-head">
-            <h3>Farmer Detail’s</h3>
+        <div className="formerdetail-details rounded-lg">
+          <div className="w-full pt-4 flex justify-center text-lg font-semibold items-center">
+            Farmer Detail's
           </div>
           <div className="formerdetail-info">
             <table>
@@ -146,7 +146,7 @@ const FormerDetails = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>Cow’s Count</td>
+                  <td>Cow's Count</td>
                   <td>:</td>
                   <td>{formerData.CowCount}</td>
                 </tr>

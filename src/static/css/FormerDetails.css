@@ -52,7 +52,7 @@
 }
 
 .formerdetail-info {
-  padding: 50px;
+  padding: 1em 2em ;
   width: 70%;
 }
 
@@ -65,10 +65,12 @@
 .formerdetail-info td {
   font-size: larger;
   padding: 8px;
+  font-weight: 300;
+  font-size: 16px;
 }
 
 .formerdetail-info td:first-child {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .formerdetail-cow {
@@ -87,12 +89,14 @@
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
-  background-color: #dcecf9;
+  background-color: #ebf1f2;
   height: 50px;
 }
 
 .formerdetail-cow th {
   background-color: #4695b8;
+  color: white;
+  font-weight: 400;
 }
 
 .formerdetail-cow table tbody tr td button {
