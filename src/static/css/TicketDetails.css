@@ -1,14 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 .ticketDetails-container {
   width: 100%;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  /* padding: 20px; */
-  /* margin-left: 50px; */
 }
 
-.no-data{
+.no-data {
   width: 99.5%;
   height: 50px;
   display: flex;
@@ -21,6 +17,32 @@
 .ticketDetails-box {
   padding: 20px;
   border-radius: 5px;
+}
+
+.ticketDetails-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.filter-dropdown input,
+.filter-dropdown select {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
 }
 
 .ticketDetails-tabs {
@@ -43,10 +65,12 @@
   background-color: #0e2741;
   color: #fff;
 }
-.ticketDetails-inputgroup{
+
+.ticketDetails-inputgroup {
   width: 35%;
 }
-.ticketDetails-inputgroup button{
+
+.ticketDetails-inputgroup button {
   width: 100%;
   margin-bottom: 10px;
   font-size: 1.2em;
@@ -78,16 +102,11 @@
   border: 1px solid #ccc;
   text-align: center;
 }
-.ticketDetails-tablebody td a{
-  text-decoration: none;
-  color: black;
-}
 
 .ticketDetails-tablebody td button {
   background-color: #4695b8;
   padding: 10px;
   border-radius: 5px;
-  /* border: none; */
   color: #fff;
 }
 

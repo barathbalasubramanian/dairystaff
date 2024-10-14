@@ -26,12 +26,13 @@
   flex-direction: column;
   padding: 20px;
 }
-
 .formerservice-details {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-self: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
 }
@@ -40,6 +41,9 @@
   width: 80%;
   display: flex;
   justify-content: space-around;
+  /* Spaces items evenly */
+  align-items: center;
+  /* Centers content vertically */
 }
 
 .formerservice-details-vlcc button {
@@ -679,3 +683,5 @@
 .loan-container-but button:hover {
   background-color: #00406b;
 }
+
+
