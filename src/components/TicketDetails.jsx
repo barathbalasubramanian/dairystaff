@@ -3,8 +3,6 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import "../static/css/TicketDetails.css";
 import { useGlobalContext } from "../Context";
 import Search from "./Search";
-import { Filter } from "react-feather"; // Import Filter icon
-import { FaFilter, FaTimes } from "react-icons/fa"; // For filter and close icons
 
 const TicketDetails = () => {
   const navigate = useNavigate();
@@ -18,12 +16,6 @@ const TicketDetails = () => {
   } = useGlobalContext();
 
   const [tab, setTab] = useState("live");
-  const [showFilters, setShowFilters] = useState(false); // Filter dropdown state
-  const [statusFilter, setStatusFilter] = useState(""); // New state for status filter
-  const [typeFilter, setTypeFilter] = useState(""); // New state for type filter
-  const [sortOrder, setSortOrder] = useState("asc"); // Sorting order
-  const [assignedDateFilter, setAssignedDateFilter] = useState(""); // State for assigned date filter
-
 
   const handleclick = async (id) => {
     setLoading(true);
@@ -32,52 +24,15 @@ const TicketDetails = () => {
     navigate("/ticketStatus");
   };
 
-// Filtered and sorted tickets logic
-const filterAndSortTickets = (tickets) => {
-  let filtered = tickets;
-
-  // Apply former ID filter
-  if (statusFilter) {
-    const numericFormerID = Number(statusFilter);
-    filtered = filtered.filter(
-      (item) => item.formerID && Number(item.formerID) === numericFormerID
-    );
-  }
-
-  // Apply service type filter
-  if (typeFilter) {
-    filtered = filtered.filter(
-      (item) => item.serviceType && item.serviceType.toLowerCase() === typeFilter.toLowerCase()
-    );
-  }
-
-  // Apply assigned date filter
-  if (assignedDateFilter) {
-    const selectedDate = new Date(assignedDateFilter).setHours(0, 0, 0, 0);
-    filtered = filtered.filter((item) => {
-      const itemDate = new Date(item.assignedDateTime).setHours(0, 0, 0, 0);
-      return itemDate === selectedDate; // Compare dates
-    });
-  }
-
-  // Apply sorting by Ticket ID
-  filtered.sort((a, b) =>
-    sortOrder === "asc"
-      ? a.ticketNumber - b.ticketNumber
-      : b.ticketNumber - a.ticketNumber
-  );
-
-  return filtered;
-};
-
-
   const renderTable = (tabData, title) => (
     <>
-      <h4 className="py-6">{title}</h4>
+      <h4 className="py-6">{title}</h4>  
       {tabData.length === 0 && (
+        <>
         <div className="no-data">
-          <h5>No Data Found!</h5>
+           <h5>No Data Found!</h5>
         </div>
+        </>
       )}
       {tabData.length > 0 && (
         <table className="ticketDetails-table">
@@ -92,7 +47,7 @@ const filterAndSortTickets = (tickets) => {
             </tr>
           </thead>
           <tbody className="ticketDetails-tablebody">
-            {filterAndSortTickets(tabData).map((item, index) => (
+            {tabData.map((item, index) => (
               <tr
                 key={index}
                 onClick={() => {
@@ -103,16 +58,18 @@ const filterAndSortTickets = (tickets) => {
                 <td>{item.formerID}</td>
                 <td>{item.serviceType}</td>
                 <td>
-                  {new Date(item.assignedDateTime).toLocaleString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hour12: true,
-                    timeZone: "UTC",
-                  })}
+                  {
+                    new Date(item.assignedDateTime).toLocaleString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                      hour12: true,
+                      timeZone: 'UTC'
+                    })
+                  }
                 </td>
                 <td>{item.assignedBy}</td>
                 <td>
@@ -136,58 +93,8 @@ const filterAndSortTickets = (tickets) => {
     <div className="ticketDetails-container">
       <Search />
       <div className="ticketDetails-box">
-<<<<<<< HEAD
-        {/* Filter Icon */}
-        <div className="filter-controls">
-          {!showFilters ? (
-            <FaFilter className="filter-icon" onClick={() => setShowFilters(true)} />
-          ) : (
-            <div className="filter-section">
-          <input
-            type="number"
-            value={statusFilter} // Former ID filter
-            onChange={(e) => setStatusFilter(e.target.value)}
-            placeholder="Enter Former ID"
-          />
-
-          <select
-            value={typeFilter} // Service Type filter
-            onChange={(e) => setTypeFilter(e.target.value)}
-          >
-            <option value="">All Types</option>
-            <option value="Veterinary">Veterinary</option>
-            <option value="AI">AI</option>
-            <option value="Feed">Feed</option>
-            <option value="Insurance">Insurance</option>
-            <option value="Loan">Loan</option>
-          </select>
-
-          <input
-            type="date" // Date filter for Assigned Date & Time
-            value={assignedDateFilter} // New state for date filter
-            onChange={(e) => setAssignedDateFilter(e.target.value)} // Handle date change
-          />
-
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="asc">Sort Ascending</option>
-            <option value="desc">Sort Descending</option>
-          </select>
-
-          <FaTimes className="close-icon" onClick={() => setShowFilters(false)} />
-        </div>
-
-          )}
-        </div>
-
-        {/* Ticket Tabs */}
-        <div className="ticketDetails-tabs">
-=======
 
         {/* <div className="ticketDetails-tabs">
->>>>>>> 739e4cca87c3fd66c4e11ba74811e8263e5eaae6
           <div className="ticketDetails-inputgroup">
             <button
               onClick={() => setTab("live")}
@@ -214,7 +121,7 @@ const filterAndSortTickets = (tickets) => {
           </div>
         </div> */}
  
-        <div className="flex space-x-4 mt-4 pb-4 w-[90%] m-auto">
+        <div className="flex space-x-4 mt-4 w-[80%] m-auto">
           <div className="ticketDetails-inputgroup">
             <button
               onClick={() => setTab("live")}
@@ -246,10 +153,6 @@ const filterAndSortTickets = (tickets) => {
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Ticket Tables */}
-=======
->>>>>>> 739e4cca87c3fd66c4e11ba74811e8263e5eaae6
         <div className="ticketDetails-table-container">
           {tab === "live" && (
             TicketData && 
