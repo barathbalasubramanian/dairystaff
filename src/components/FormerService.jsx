@@ -96,6 +96,9 @@ const FormerService = () => {
   const handleDoctorSelect = (value) => {
     setSelectedDoctor(value);
   };
+  const handleBack = () => {
+    navigate(-1); // Navigate to the previous page
+  };
 
   const toggleCart = () => {
     setShowFeed(false);
@@ -180,7 +183,11 @@ const FormerService = () => {
           )}
 
           <div className="">
-          <div className="bg-white rounded-lg shadow-md p-6 w-full mb-4 mx-auto">
+            <div className="bg-white rounded-lg shadow-md p-6 w-full mb-4 mx-auto">
+              <button onClick={handleBack} className="flex items-center space-x-2">
+                <ArrowLeft className="text-blue-500" />
+                <span>Back</span>
+              </button>
             {/* Farmer's Name and ID */}
               <div className="border-b pb-4 mb-4">
                 <h2 className="text-2xl font-semibold text-gray-800">{formerData.name}</h2>

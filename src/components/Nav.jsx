@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../static/css/nav.css";
 import logout from "../static/img/logout.png";
 import { useGlobalContext } from "../Context";
+import Image from '../static/img/Dashboard.png';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Nav = () => {
                 stroke-width="5"
               />
             </svg>
+            <img src={ Image}  />
           </div>
           <div className="nav-body py-10">
             <ul className="py-10">

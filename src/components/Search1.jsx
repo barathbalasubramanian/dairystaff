@@ -13,9 +13,7 @@ const Search = () => {
   return (
     <>
       <div className="search1">
-        <div className="search-parent">
-          <input type="text" placeholder="Search" />
-        </div>
+        
         <div className="manage">
           <div className="drop">
             <h3>Manage Account</h3>
