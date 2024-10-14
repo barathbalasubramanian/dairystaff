@@ -50,9 +50,9 @@
   padding: 5px;
 }
 .formerservice-service {
-  padding: 50px 200px;
+  padding: 150px 200px;
   background-color: #dcecf9;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: large;
 }
 .formerservice-inputradio div {
@@ -382,6 +382,8 @@
 .formerservice-service {
   position: relative;
   overflow: hidden; /* Ensure the sliding effect stays within bounds */
+  min-height: 50vh;
+  margin-bottom: 2em;
 }
 
 .showvet {
@@ -435,7 +437,6 @@
 .showvet-radio label,
 .showvet-inputtextarea label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
   color: #000;
 }
@@ -596,14 +597,13 @@
 }
 
 .formerservice-doctor-but button {
-  padding: 10px 20px;
   background-color: #88c6ed; /* Button background color matching the image */
   border: 2px solid #4695b8;
   border-radius: 8px;
   color: #000;
-  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  padding: 6px 18px !important;
 }
 
 .formerservice-doctor-but button:hover {

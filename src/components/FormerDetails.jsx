@@ -179,44 +179,53 @@ const FormerDetails = () => {
         </div>
 
         {/* Filter and Sort Controls */}
-        <div className="filter-controls">
-          {!showFilter ? (
-            <FaFilter className="filter-icon" onClick={() => setShowFilter(true)} />
-          ) : (
-            <div className="filter-section">
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-              >
-                <option value="">All Status</option>
-                <option value="pendingApproval">Pending</option>
-                <option value="completed">Complete</option>
-                <option value="live">Live</option>
-              </select>
+        <div className="flex flex-col justify-start py-4 w-full">
+          <div className="font-medium text-lg py-4">Filter :</div>
+          <div className="w-full flex gap-4 items-center p-4 bg-gray-100 rounded-lg shadow-lg transition-all duration-300">
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="p-2 flex-1 border border-gray-300 rounded-md bg-white text-sm focus:outline-none"
+            >
+              <option value="">All Status</option>
+              <option value="pendingApproval">Pending</option>
+              <option value="completed">Complete</option>
+              <option value="live">Live</option>
+            </select>
 
-              <select
-                value={typeFilter}
-                onChange={(e) => setTypeFilter(e.target.value)}
-              >
-                <option value="">All Types</option>
-                <option value="Veterinary">Veterinary</option>
-                <option value="AI">AI</option>
-                <option value="Feed">Feed</option>
-                <option value="Insurance">Insurance</option>
-                <option value="Loan">Loan</option>
-              </select>
+            <select
+              value={typeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
+              className="p-2 flex-1 border border-gray-300 rounded-md bg-white text-sm focus:outline-none"
+            >
+              <option value="">All Types</option>
+              <option value="Veterinary">Veterinary</option>
+              <option value="AI">AI</option>
+              <option value="Feed">Feed</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Loan">Loan</option>
+            </select>
 
-              <select
-                value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value)}
-              >
-                <option value="asc">Sort Ascending</option>
-                <option value="desc">Sort Descending</option>
-              </select>
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+              className="flex-1 p-2 border border-gray-300 rounded-md bg-white text-sm focus:outline-none"
+            >
+              <option value="asc">Sort Ascending</option>
+              <option value="desc">Sort Descending</option>
+            </select>
 
-              <FaTimes className="close-icon" onClick={() => setShowFilter(false)} />
-            </div>
-          )}
+            <button
+              onClick={() => {
+                setStatusFilter('');
+                setTypeFilter('');
+                setSortOrder('asc');
+              }}
+              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+            >
+              Clear Filters
+            </button>
+          </div>
         </div>
 
         {/* Tickets Table */}
