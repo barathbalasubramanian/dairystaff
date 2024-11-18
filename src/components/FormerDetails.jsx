@@ -180,8 +180,7 @@ const FormerDetails = () => {
 
         {/* Filter and Sort Controls */}
         <div className="flex flex-col justify-start py-4 w-full">
-          <div className="font-medium text-lg py-4">Filter :</div>
-          <div className="w-full flex gap-4 items-center p-4 bg-gray-100 rounded-lg shadow-lg transition-all duration-300">
+          <div className="w-full flex gap-4 items-center p-4 bg-gray-100 rounded-lg shadow-md transition-all duration-300">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}

@@ -55,13 +55,13 @@ const Login = () => {
             </div>
           </div>
           <div className="demo-content">
-            <h1>Welcome Page</h1>
-            <p>Login to Continue access</p>
+            <h1 className="text-3xl font-semibold">Welcome</h1>
+            <p className="text-lg font-medium text-gray-700">Login to Continue access</p>
           </div>
         </div>
         <div className="login-box">
-          <div className="login-head py-6">
-            <h2>Login</h2>
+          <div className="py-6">
+            <h2 className="text-3xl font-medium">Login</h2>
           </div>
           <div className="login-form">
             <form>
@@ -93,9 +93,6 @@ const Login = () => {
             {/* <Link to="/ticketDetails"> */}
             <button className="login-but mt-10" onClick={handlelogin}>
               Login
-            </button>
-            <button className="login-but" onClick={handleRegister}>
-              Register
             </button>
             {/* </Link> */}
           </div>

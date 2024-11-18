@@ -180,78 +180,79 @@ const FormerService = () => {
           )}
 
           <div className="">
-          <div className="bg-white rounded-lg shadow-md p-6 w-full mb-4 mx-auto">
-            {/* Farmer's Name and ID */}
-              <div className="border-b pb-4 mb-4">
-                <h2 className="text-2xl font-semibold text-gray-800">{formerData.name}</h2>
-                <p className="text-sm text-gray-500">ID: {formerData.id}</p>
-              </div>
 
-              {/* VLCC and Cow Count Section */}
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm">
-                  VLCC: {formerData.VLCC}
-                </button>
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm">
-                  Total Cow's: {formerData.CowCount}
-                </button>
-              </div>
+            <div className="bg-white flex justify-between rounded-lg shadow-md p-6 w-full mb-4 mx-auto">
+              <div className="">
+              {/* Farmer's Name and ID */}
+                <div className="border-b pb-4 mb-4">
+                  <h2 className="text-2xl font-semibold text-gray-800">{formerData.name}</h2>
+                  <p className="text-sm text-gray-500">ID: {formerData.id}</p>
+                </div>
 
-              {/* Contact Information */}
-              <div className="flex flex-wrap gap-4 items-center mb-4">
-                <div className="flex items-center gap-2 text-gray-700">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-gray-600"
-                  >
-                    {/* SVG Path */}
-                    <path
-                      d="M4 20C3.45 20 2.97917 19.8042 2.5875 19.4125C2.19583 19.0208 2 18.55 2 18V6C2 5.45 2.19583 4.97917 2.5875 4.5875C2.97917 4.19583 3.45 4 4 4H20C20.55 4 21.0208 4.19583 21.4125 4.5875C21.8042 4.97917 22 5.45 22 6V18C22 18.55 21.8042 19.0208 21.4125 19.4125C21.0208 19.8042 20.55 20 20 20H4ZM12 13L4 8V18H20V8L12 13ZM12 11L20 6H4L12 11ZM4 8V6V18V8Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span>{formerData.email}</span>
+                {/* VLCC and Cow Count Section */}
+                <div className="flex flex-wrap gap-4 mb-4">
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm">
+                    VLCC: {formerData.VLCC}
+                  </button>
+                  {/* BMC and Cluster Information */}
+                  <div className="text-white px-4 py-2 bg-blue-500 rounded-md shadow-sm">
+                    <span>BMC:</span> {formerData.BMC}
+                  </div>
+                  <div className="text-white px-4 py-2 bg-blue-500 rounded-md shadow-sm">
+                    <span>Cluster:</span> {formerData.Cluster}
+                  </div>
+                  <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm">
+                    Total Cow's: {formerData.CowCount}
+                  </button>
                 </div>
-                <div className="flex items-center gap-2 text-gray-700">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-gray-600"
-                  >
-                    {/* SVG Path */}
-                    <path
-                      d="M19.95 21C17.8667 21 15.8083 20.5458 13.775 19.6375C11.7417 18.7292 9.89167 17.4417 8.225 15.775C6.55833 14.1083 5.27083 12.2583 4.3625 10.225C3.45417 8.19167 3 6.13333 3 4.05C3 3.75 3.1 3.5 3.3 3.3C3.5 3.1 3.75 3 4.05 3H8.1C8.33333 3 8.54167 3.07917 8.725 3.2375C8.90833 3.39583 9.01667 3.58333 9.05 3.8L9.7 7.3C9.73333 7.56667 9.725 7.79167 9.675 7.975C9.625 8.15833 9.53333 8.31667 9.4 8.45L6.975 10.9C7.30833 11.5167 7.70417 12.1125 8.1625 12.6875C8.62083 13.2625 9.125 13.8167 9.675 14.35C10.1917 14.8667 10.7333 15.3458 11.3 15.7875C11.8667 16.2292 12.4667 16.6333 13.1 17L15.45 14.65C15.6 14.5 15.7958 14.3875 16.0375 14.3125C16.2792 14.2375 16.5167 14.2167 16.75 14.25L20.2 14.95C20.4333 15.0167 20.625 15.1375 20.775 15.3125C20.925 15.4875 21 15.6833 21 15.9V19.95C21 20.25 20.9 20.5 20.7 20.7C20.5 20.9 20.25 21 19.95 21Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span>{formerData.phno.mobile1}</span>
+
+                {/* Contact Information */}
+                <div className="flex flex-wrap gap-4 items-center mb-4">
+                  <div className="flex items-center gap-2 text-gray-700">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-gray-600"
+                    >
+                      {/* SVG Path */}
+                      <path
+                        d="M4 20C3.45 20 2.97917 19.8042 2.5875 19.4125C2.19583 19.0208 2 18.55 2 18V6C2 5.45 2.19583 4.97917 2.5875 4.5875C2.97917 4.19583 3.45 4 4 4H20C20.55 4 21.0208 4.19583 21.4125 4.5875C21.8042 4.97917 22 5.45 22 6V18C22 18.55 21.8042 19.0208 21.4125 19.4125C21.0208 19.8042 20.55 20 20 20H4ZM12 13L4 8V18H20V8L12 13ZM12 11L20 6H4L12 11ZM4 8V6V18V8Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span>{formerData.email}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-700">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-gray-600"
+                    >
+                      {/* SVG Path */}
+                      <path
+                        d="M19.95 21C17.8667 21 15.8083 20.5458 13.775 19.6375C11.7417 18.7292 9.89167 17.4417 8.225 15.775C6.55833 14.1083 5.27083 12.2583 4.3625 10.225C3.45417 8.19167 3 6.13333 3 4.05C3 3.75 3.1 3.5 3.3 3.3C3.5 3.1 3.75 3 4.05 3H8.1C8.33333 3 8.54167 3.07917 8.725 3.2375C8.90833 3.39583 9.01667 3.58333 9.05 3.8L9.7 7.3C9.73333 7.56667 9.725 7.79167 9.675 7.975C9.625 8.15833 9.53333 8.31667 9.4 8.45L6.975 10.9C7.30833 11.5167 7.70417 12.1125 8.1625 12.6875C8.62083 13.2625 9.125 13.8167 9.675 14.35C10.1917 14.8667 10.7333 15.3458 11.3 15.7875C11.8667 16.2292 12.4667 16.6333 13.1 17L15.45 14.65C15.6 14.5 15.7958 14.3875 16.0375 14.3125C16.2792 14.2375 16.5167 14.2167 16.75 14.25L20.2 14.95C20.4333 15.0167 20.625 15.1375 20.775 15.3125C20.925 15.4875 21 15.6833 21 15.9V19.95C21 20.25 20.9 20.5 20.7 20.7C20.5 20.9 20.25 21 19.95 21Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span>{formerData.phno.mobile1}</span>
+                  </div>
                 </div>
+                
               </div>
 
               {/* Address Information */}
-              <div className="border-t pt-4 mt-4">
+              <div className="pt-4 mt-4">
                 <p className="text-gray-700">
                   <strong>Address:</strong> {formerData.Address.address1}, {formerData.Address.address2}
                 </p>
                 <p className="text-gray-700">
                   <strong>VSP:</strong> {formerData.VSP.name}, {formerData.VSP.phno}
-                </p>
-              </div>
-
-              {/* BMC and Cluster Information */}
-              <div className="flex justify-between items-center border-t pt-4 mt-4">
-                <p className="text-gray-700">
-                  <strong>BMC:</strong> {formerData.BMC}
-                </p>
-                <p className="text-gray-700">
-                  <strong>Cluster:</strong> {formerData.Cluster}
                 </p>
               </div>
             </div>
@@ -564,61 +565,10 @@ const FormerService = () => {
                   </div>
                 </div>
               )}
-              {/* <form action="">
-                <div className="formerservice-inputradio">
-                  <label className="text-bold">Select Service Type *</label>
-                  <div>
-                    <div></div>
-                    <input
-                      type="radio"
-                      name="service"
-                      value="AI"
-                      onChange={handleServiceChange}
-                    />
-                    <label>AI</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="service"
-                      value="Veterinary"
-                      onChange={handleServiceChange}
-                    />
-                    <label>Veterinary</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="service"
-                      value="Feed"
-                      onChange={handleServiceChange}
-                    />
-                    <label>Feed & Supplementary Foods</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="service"
-                      value="Loan"
-                      onChange={handleServiceChange}
-                    />
-                    <label>Loan</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="service"
-                      value="Insurance"
-                      onChange={handleServiceChange}
-                    />
-                    <label>Insurance</label>
-                  </div>
-                </div>
-              </form> */}
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="formerservice-inputradio">
                   <label className="font-bold mb-2 block">Select Service Type *</label>
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex flex-col gap-2 flex-wrap">
                     <button
                       type="button"
                       onClick={() => handleServiceChange({ target: { value: 'AI' } })}
@@ -686,9 +636,6 @@ const FormerService = () => {
                 </button>
               </form>
 
-              {/* <div className="formerservice-button">
-                <button onClick={handleservicesumbit}>Proceed</button>
-              </div> */}
             </div>
           </div>
         </div>

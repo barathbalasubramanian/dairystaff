@@ -26,7 +26,7 @@ const TicketDetails = () => {
 
   const renderTable = (tabData, title) => (
     <>
-      <h4 className="py-6">{title}</h4>  
+      <h4 className="py-1 pb-3 font-medium text-xl">{title}</h4>  
       {tabData.length === 0 && (
         <>
         <div className="no-data">
@@ -94,34 +94,7 @@ const TicketDetails = () => {
       <Search />
       <div className="ticketDetails-box">
 
-        {/* <div className="ticketDetails-tabs">
-          <div className="ticketDetails-inputgroup">
-            <button
-              onClick={() => setTab("live")}
-              className={tab === "live" ? "active" : ""}
-            >
-              Live
-            </button>
-          </div>
-          <div className="ticketDetails-inputgroup">
-            <button
-              onClick={() => setTab("pendingApproval")}
-              className={tab === "pendingApproval" ? "active" : ""}
-            >
-              Pending Approval
-            </button>
-          </div>
-          <div className="ticketDetails-inputgroup">
-            <button
-              onClick={() => setTab("completed")}
-              className={tab === "completed" ? "active" : ""}
-            >
-              Completed
-            </button>
-          </div>
-        </div> */}
- 
-        <div className="flex space-x-4 mt-4 w-[80%] m-auto">
+        <div className="flex space-x-4 w-[80%] m-auto">
           <div className="ticketDetails-inputgroup">
             <button
               onClick={() => setTab("live")}
@@ -153,7 +126,7 @@ const TicketDetails = () => {
           </div>
         </div>
 
-        <div className="ticketDetails-table-container">
+        <div className="ticketDetails-table-container mt-2">
           {tab === "live" && (
             TicketData && 
             <>

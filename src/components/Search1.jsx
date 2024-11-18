@@ -12,7 +12,7 @@ const Search = () => {
   };
   return (
     <>
-      <div className="search1">
+      {/* <div className="search1">
         <div className="search-parent">
           <input type="text" placeholder="Search" />
         </div>
@@ -30,7 +30,7 @@ const Search = () => {
 
           {dropdownVisible && <AccountDropdown />}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

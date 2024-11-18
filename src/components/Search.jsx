@@ -11,7 +11,7 @@ const Search = () => {
   };
   return (
     <>
-      <div className="search px-4 py-3">
+      {/* <div className="search px-4 py-3">
         <div className="">
           <input type="text" placeholder="Search" className="w-[180%] px-2 py-[3px] pl-3 rounded-sm outline-none border-none" />
         </div>
@@ -23,7 +23,7 @@ const Search = () => {
 
           {dropdownVisible && <AccountDropdown />}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
