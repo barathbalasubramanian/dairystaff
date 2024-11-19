@@ -192,8 +192,10 @@ const AppProvider = ({ children }) => {
       );
       console.log(response.data);
       if (response.data.message === "No orders found for this former") {
+        console.log("No orders found for this former");
         setPreOrder(null);
       } else {
+        console.log(response.data);
         setPreOrder(response.data);
       }
     } catch (err) {

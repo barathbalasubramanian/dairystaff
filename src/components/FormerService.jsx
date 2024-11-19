@@ -31,6 +31,7 @@ const FormerService = () => {
     ticketId,
     getTicketForAmount,
     getTicketForLoan,
+    checkFormerId,
   } = useGlobalContext();
 
   const [showDoctor, setShowDoctor] = useState(false);
@@ -48,16 +49,15 @@ const FormerService = () => {
   const [pre,setPre]= useState("low")
   const [doctor, setDoctor] = useState();
   const [isPreview, setIsPreview] = useState(false);
-    const navigate = useNavigate();  // Initialize useNavigate hook
+  const navigate = useNavigate();  // Initialize useNavigate hook
   
   
-
   if (formerID === -1) {
     return <h1>Loading...</h1>;
   }
-const handleBackClick = () => {
-    window.history.back(); 
-};
+  const handleBackClick = () => {
+      window.history.back(); 
+  };
 
   const handleBack = () => {
     navigate(-1);  // Go back to the previous page in history
@@ -76,7 +76,7 @@ const handleBackClick = () => {
     setShowAll(!showAll);
   };
 
-  const handleservicesumbit = () => {
+  const handleservicesumbit = async () => {
     if (selectedService === "AI" || selectedService === "Veterinary") {
       if(selectedService === "AI"){
         setDoctor(AIdoctor)
@@ -87,6 +87,8 @@ const handleBackClick = () => {
       setShowFeed(false);
       setShowVet(true);
     } else if (selectedService === "Feed") {
+      console.log("Feed")
+      await checkFormerId(formerID);
       setShowDoctor(false);
       setShowFeed(true);
     } else if (selectedService === "Loan") {
@@ -190,91 +192,91 @@ const handleBackClick = () => {
           )}
 
           <div className="">
+            <div className="bg-white  rounded-lg p-6 w-full max-w-6xl mx-auto mt-6">
+              <div className="flex flex-col md:flex-row justify-between gap-6">
+                {/* Left Section */}
+                <div className="flex-1">
+                  {/* Header */}
+                  <div className="border-b border-gray-200 pb-4 mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900">{formerData.name}</h2>
+                    <p className="text-sm text-gray-500 mt-1">ID: {formerData.id}</p>
+                  </div>
 
-    <div className="bg-white  rounded-lg p-6 w-full max-w-6xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between gap-6">
-        {/* Left Section */}
-        <div className="flex-1">
-          {/* Header */}
-          <div className="border-b border-gray-200 pb-4 mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">{formerData.name}</h2>
-            <p className="text-sm text-gray-500 mt-1">ID: {formerData.id}</p>
-          </div>
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    <div className="bg-blue-50 rounded-lg p-3">
+                      <p className="text-sm text-blue-600 font-medium">VLCC</p>
+                      <p className="text-lg font-semibold text-blue-700">{formerData.VLCC}</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-3">
+                      <p className="text-sm text-blue-600 font-medium">BMC</p>
+                      <p className="text-lg font-semibold text-blue-700">{formerData.BMC}</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-3">
+                      <p className="text-sm text-blue-600 font-medium">Cluster</p>
+                      <p className="text-lg font-semibold text-blue-700">{formerData.Cluster}</p>
+                    </div>
+                    <div className="bg-green-50 rounded-lg p-3">
+                      <p className="text-sm text-green-600 font-medium">Total Cows</p>
+                      <p className="text-lg font-semibold text-green-700">{formerData.CowCount}</p>
+                    </div>
+                  </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            <div className="bg-blue-50 rounded-lg p-3">
-              <p className="text-sm text-blue-600 font-medium">VLCC</p>
-              <p className="text-lg font-semibold text-blue-700">{formerData.VLCC}</p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-3">
-              <p className="text-sm text-blue-600 font-medium">BMC</p>
-              <p className="text-lg font-semibold text-blue-700">{formerData.BMC}</p>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-3">
-              <p className="text-sm text-blue-600 font-medium">Cluster</p>
-              <p className="text-lg font-semibold text-blue-700">{formerData.Cluster}</p>
-            </div>
-            <div className="bg-green-50 rounded-lg p-3">
-              <p className="text-sm text-green-600 font-medium">Total Cows</p>
-              <p className="text-lg font-semibold text-green-700">{formerData.CowCount}</p>
-            </div>
-          </div>
+                  {/* Contact Info */}
+                  
+                </div>
 
-          {/* Contact Info */}
-          
-        </div>
+                {/* Right Section */}
+                <div className="flex-1">
+                  <div className="space-y-4">
 
-        {/* Right Section */}
-        <div className="flex-1">
-          <div className="space-y-4">
+                    <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-center gap-3 text-gray-600 mb-6">
+                      <Mail className="w-5 h-5" />
+                      <span className="text-sm">{formerData.email}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-gray-600">
+                      <Phone className="w-5 h-5" />
+                      <span className="text-sm">{formerData.phno.mobile1}</span>
+                    </div>
+                  </div>
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <MapPin className="w-5 h-5 text-gray-500" />
+                        <h3 className="font-medium text-gray-900">Address</h3>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        {formerData.Address.address1},
+                        <br />
+                        {formerData.Address.address2}
+                      </p>
+                    </div>
 
-            <div className="bg-gray-50 rounded-lg p-4">
-            <div className="flex items-center gap-3 text-gray-600 mb-6">
-              <Mail className="w-5 h-5" />
-              <span className="text-sm">{formerData.email}</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-600">
-              <Phone className="w-5 h-5" />
-              <span className="text-sm">{formerData.phno.mobile1}</span>
-            </div>
-          </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-5 h-5 text-gray-500" />
-                <h3 className="font-medium text-gray-900">Address</h3>
+                    {/* VSP Information */}
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Users className="w-5 h-5 text-gray-500" />
+                        <h3 className="font-medium text-gray-900">VSP Details</h3>
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        <p className="font-medium">{formerData.VSP.name}</p>
+                        <p>{formerData.VSP.phno}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-gray-600">
-                {formerData.Address.address1},
-                <br />
-                {formerData.Address.address2}
-              </p>
             </div>
+            <button
+              type="button"
+              onClick={handleBack} // Define this function to handle the back navigation
+              className="absolute top-2 left-2 flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Back
+            </button>
 
-            {/* VSP Information */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Users className="w-5 h-5 text-gray-500" />
-                <h3 className="font-medium text-gray-900">VSP Details</h3>
-              </div>
-              <div className="text-sm text-gray-600">
-                <p className="font-medium">{formerData.VSP.name}</p>
-                <p>{formerData.VSP.phno}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button
-        type="button"
-        onClick={handleBack} // Define this function to handle the back navigation
-        className="absolute top-2 left-2 flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors"
-      >
-        <ArrowLeft className="w-5 h-5" />
-        Back
-      </button>
-        <div className="formerservice-service">   
+            <div className="formerservice-service">   
               {preorder === null && showFeed && navigate("/feed")}
               {showFeed && preorder && (
                 <div className="formerservice-feed">
