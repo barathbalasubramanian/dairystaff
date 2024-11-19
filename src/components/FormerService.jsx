@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../static/css/FormerService.css";
 import { FaTimes } from "react-icons/fa";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 import _ from "lodash";
 import pic from "../static/img/pic.gif";
 import Search from "./Search";
 import { ArrowLeft } from 'react-feather';
 import { Mail, Phone, MapPin, Users } from 'lucide-react';
+
 
 const FormerService = () => {
   const {
@@ -45,26 +46,27 @@ const FormerService = () => {
   const [showIn, setShowIn] = useState(false);
   const [Comments, setComments] = useState("");
   const [pre,setPre]= useState("low")
-  const [ doctor, setDoctor] = useState();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (formerID === -1) {
-      navigate("/formerId");
-    }
-  }, [navigate]);
+  const [doctor, setDoctor] = useState();
+  const [isPreview, setIsPreview] = useState(false);
+    const navigate = useNavigate();  // Initialize useNavigate hook
+  
+  
 
   if (formerID === -1) {
     return <h1>Loading...</h1>;
   }
+const handleBackClick = () => {
+    window.history.back(); 
+};
 
+  const handleBack = () => {
+    navigate(-1);  // Go back to the previous page in history
+  };
   const handleServiceChange = (event) => {
     const service = event.target.value;
     setSelectedService(service);
   };
-  const handleBackClick = () => {
-    // Your back logic here, for example:
-    window.history.back(); // Go to the previous page
-  };
+ 
 
   const toggleDoctorPopup = () => {
     setShowDoctor(!showDoctor);
@@ -102,6 +104,13 @@ const FormerService = () => {
     setShowFeed(false);
     setShowDoctor(false);
     setShowCart(!showCart);
+  };
+   const handlePreview = () => {
+    if (selectedService) {
+      setIsPreview(true); // Show the preview container
+    } else {
+      alert('Please select a service type to proceed.'); // Validation
+    }
   };
 
   const handlerepeat = (id) => {
@@ -257,8 +266,15 @@ const FormerService = () => {
         </div>
       </div>
     </div>
-
-            <div className="formerservice-service">
+    <button
+        type="button"
+        onClick={handleBack} // Define this function to handle the back navigation
+        className="absolute top-2 left-2 flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        Back
+      </button>
+        <div className="formerservice-service">   
               {preorder === null && showFeed && navigate("/feed")}
               {showFeed && preorder && (
                 <div className="formerservice-feed">
@@ -282,8 +298,10 @@ const FormerService = () => {
                         </tr>
                       </thead>
                       <tbody>
+                        
                         {!showAll && (
                           <>
+                            
                             <tr>
                               <td>{preorder[0].date}</td>
                               <td>
@@ -308,6 +326,7 @@ const FormerService = () => {
                             </tr>
                           </>
                         )}
+                        
                         {showAll && (
                           <>
                             {preorder.map((preorde, id) => (
@@ -377,7 +396,7 @@ const FormerService = () => {
               )}
               {showloan && (
                 <>
-                  <div className="formerservice-back-button" onClick={handleBackClick}>
+                  <div className="formerservice-back-button" onClick={handleBack}>
                     <ArrowLeft size={24} />
                   </div>
                   <div className="loan-container">
@@ -432,6 +451,14 @@ const FormerService = () => {
                 <>
                   <div className="formerservice-doctor  active">
                     <div className="formerservice-doctor-head">
+                       <button
+                          type="button"
+                          onClick={handleBack}
+                          className="absolute top-2 left-2 flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors"
+                        >
+                          <ArrowLeft className="w-5 h-5" />
+                          Back
+                        </button>
                       <h3>Doctor Details</h3>
                     </div>
                     <div className="formerservice-body">
@@ -448,16 +475,16 @@ const FormerService = () => {
                         <tbody>
                           {doctor.map((doc) => (
                             <tr key={doc.id}>
-                              <td>
-                                <input
-                                  type="radio"
-                                  name="doctor"
-                                  value={doc.id}
-                                  onChange={() => {
-                                    handleDoctorSelect(doc.id);
-                                  }}
-                                />
-                              </td>
+                                <td>
+                              <input
+                                type="checkbox"
+                                name="doctor"
+                                value={doc.id}
+                                checked={selectedDoctor === doc.id}
+                                onChange={() => handleDoctorSelect(doc.id)}
+                              />
+                            </td>
+        
                               <td>{doc.id}</td>
                               <td>{doc.name}</td>
                               <td>{doc.Location}</td>
@@ -478,8 +505,17 @@ const FormerService = () => {
               )}
               {showVet && (
                 <>
+                  
                   <div className="showvet"> 
                     <div className="showvet-head">
+                      <button
+                      type="button"
+                      onClick={handleBackClick} // Define this function to handle the back navigation
+                      className="absolute top-2 left-2 flex items-center gap-1 text-gray-700 hover:text-blue-500 transition-colors"
+                    >
+                      <ArrowLeft className="w-5 h-5" />
+                      Back
+                    </button>
                       <h2 className="font-semibold">VETERINARY</h2>
                     </div>
                     <div className="showvet-body">
@@ -528,6 +564,7 @@ const FormerService = () => {
                   </div>
                 </>
               )}
+              
               {showCart && (
                 <div className="formerservice-feed">
                   <div className="formerservice-feed-head">
@@ -566,76 +603,78 @@ const FormerService = () => {
                   </div>
                 </div>
               )}
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="formerservice-inputradio">
-                  <label className="font-bold mb-2 block">Select Service Type *</label>
-                  <div className="flex flex-col gap-2 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => handleServiceChange({ target: { value: 'AI' } })}
-                      className={`px-4 py-2 rounded-md border ${
-                        selectedService === 'AI'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
-                      } transition-colors`}
-                    >
-                      AI
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleServiceChange({ target: { value: 'Veterinary' } })}
-                      className={`px-4 py-2 rounded-md border ${
-                        selectedService === 'Veterinary'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
-                      }  transition-colors`}
-                    >
-                      Veterinary
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleServiceChange({ target: { value: 'Feed' } })}
-                      className={`px-4 py-2 rounded-md border ${
-                        selectedService === 'Feed'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
-                      } transition-colors`}
-                    >
-                      Feed & Supplementary Foods
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleServiceChange({ target: { value: 'Loan' } })}
-                      className={`px-4 py-2 rounded-md border ${
-                        selectedService === 'Loan'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
-                      }transition-colors`}
-                    >
-                      Loan
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleServiceChange({ target: { value: 'Insurance' } })}
-                      className={`px-4 py-2 rounded-md border ${
-                        selectedService === 'Insurance'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
-                      } transition-colors`}
-                    >
-                      Insurance
-                    </button>
-                  </div>
-                </div>
+              
+          <form onSubmit={(e) => e.preventDefault()} className="relative">
+          <div className="formerservice-inputradio">
+            <label className="font-bold mb-2 block">Select Service Type *</label>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => handleServiceChange({ target: { value: 'AI' } })}
+                className={`px-4 py-2 rounded-md border ${
+                  selectedService === 'AI'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
+                } transition-colors`}
+              >
+                AI
+              </button>
+              <button
+                type="button"
+                onClick={() => handleServiceChange({ target: { value: 'Veterinary' } })}
+                className={`px-4 py-2 rounded-md border ${
+                  selectedService === 'Veterinary'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
+                } transition-colors`}
+              >
+                Veterinary
+              </button>
+              <button
+                type="button"
+                onClick={() => handleServiceChange({ target: { value: 'Feed' } })}
+                className={`px-4 py-2 rounded-md border ${
+                  selectedService === 'Feed'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
+                } transition-colors`}
+              >
+                Feed & Supplementary Foods
+              </button>
+              <button
+                type="button"
+                onClick={() => handleServiceChange({ target: { value: 'Loan' } })}
+                className={`px-4 py-2 rounded-md border ${
+                  selectedService === 'Loan'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
+                } transition-colors`}
+              >
+                Loan
+              </button>
+              <button
+                type="button"
+                onClick={() => handleServiceChange({ target: { value: 'Insurance' } })}
+                className={`px-4 py-2 rounded-md border ${
+                  selectedService === 'Insurance'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-100'
+                } transition-colors`}
+              >
+                Insurance
+              </button>
+            </div>
+          </div>
 
-                <button
-                  onClick={handleservicesumbit}
-                  className="mt-4 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
-                  disabled={!selectedService}
-                >
-                  Proceed
-                </button>
-              </form>
+          <button
+            onClick={handleservicesumbit}
+            className="absolute right-0 bottom-0 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+            disabled={!selectedService}
+          >
+            Proceed
+          </button>
+        </form>
+
 
             </div>
           </div>
